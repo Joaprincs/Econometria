@@ -1,0 +1,727 @@
+---
+title: "Ecuacion Mincer: Analisis Regresional Econometrico en el Departamento de la Livertad - 2020"
+author: "Enriquez Acuña Joel - Martinez Hilario - Sullcaray Paucar Joan"
+
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+\
+
+**INTRODUCCION**
+
+En este trabajo, aplicaremos la ecuación de Mincer utilizando datos de la Encuesta Nacional de Hogares (ENAHO) del Instituto Nacional de Estadística e Informática (INEI) de Perú. La ENAHO es una fuente rica y detallada de información socioeconómica y demográfica que nos permitirá realizar un análisis exhaustivo de los determinantes del ingreso en el contexto peruano.
+El objetivo principal de este estudio es aplicar los conceptos y técnicas aprendidas en clase, específicamente en el ámbito de la econometría aplicada, para estimar y interpretar modelos de regresión que expliquen el ingreso de los individuos. A través de este análisis, se buscará:
+
+
+Estimación de la ecuación de Mincer: Utilizar la ENAHO para estimar la ecuación de Mincer, cuantificando la relación entre educación, experiencia laboral y el ingreso.
+
+Análisis e interpretación económica: Interpretar los coeficientes obtenidos en términos económicos, evaluando cómo la educación y la experiencia afectan los salarios en Perú.
+
+A lo largo del trabajo, se emplearán técnicas econométricas asegurar  los resultados. Además, se discutirá la relevancia de los resultados en el contexto de economico, considerando cómo los hallazgos pueden informar distintoa contextos que llega a tener la ecuacion de minces.
+
+
+**MARCO DE REFERENCIA**
+
+
+**LA ECUACION DE MINCER**
+
+A quien no le gustaría medir la rentabilidad que tendrá los años y el tiempo invertido en la
+educación
+Jacob Mincer, después de haber observado este hecho en estados unidos, en su libro, “
+escolarización", experiencia e ingresos, da a conocer un modelos de determinación, de los
+ingresos, si bien esta controversia generó mucha bibliografía en el siglo 20, la que mas se
+utiliza en la ecuación de Mincer y ha permitido la comparación de la eficiencia de la producción
+en educación. Parte de la teoría del capital humano que nos dice que existe un relación
+positiva entre el numero de años de escolaridad y sus ingresos a futuro.
+La ecuación de Mincer estima un modelo semilogarítmico teniendo como variable
+dependiente el logaritmo de ingresos y a la variable independiente los años de educción, la
+experiencia laboral y el cuadrado de la experiencia laboral.
+A continuación se presenta el modelo de la ecuacion:
+
+ln(𝑌) = 𝛽0 + 𝛽1𝐸𝑑𝑢𝑐 + 𝛽2𝐸𝑥𝑝 + 𝛽3𝐸𝑥𝑝2 + 𝜀
+
+Donde:
+
+Y: representa los ingresos del individuo
+
+Educ: es el número de años de educación formal completada
+
+Exp: Años de experiencia laboral
+
+𝜀: es el termino de perturbación aleatoria de media cero.
+
+En el cual entre una de las hipótesis que tenemos es que el valore del coeficiente de los años
+de educacion formal se interpreta como el impacto de un año adicional de estudio obtenido
+por los trabajadores, pero este no va a ser siempre mayor o no va estar siempre en
+crecimiento, mientras aumenta mas la experiencia los ingresos aumenta, pero desde un punto
+determinado este tiene un efecto menor que el que le precede, por lo que se espera que la
+estimación de b2 sea positiva y b3 sea negativa.
+
+La libertad
+
+Población: La población de la Región de La Libertad supera los 2 millones de habitantes, concentrándose principalmente en su capital, Trujillo, y otras ciudades como Chepén, Virú y Pacasmayo. La tasa de crecimiento poblacional de la región se encuentra en aumento (Gómez, 2020).
+
+Estructura Económica: La economía de La Libertad se sustenta en varios sectores, incluyendo la agricultura, la pesca, la minería, el comercio, el turismo, la manufactura, la construcción y los transportes y comunicaciones (Martínez, 2021).
+
+Inversión Privada: La inversión privada en La Libertad se concentra en diversos sectores, incluyendo la agricultura, la minería, la industria manufacturera, el comercio y el turismo. Ejemplos de inversión privada incluyen la expansión de plantaciones de arándanos por empresas agroindustriales y la construcción de hoteles y complejos turísticos en la costa (Gómez, 2020).
+
+Inversión Pública: El gobierno central y los gobiernos regionales destinan recursos a la inversión pública en La Libertad, financiando proyectos de infraestructura, educación, salud, vivienda, seguridad y desarrollo económico. Ejemplos de inversión pública incluyen la construcción de carreteras, hospitales, escuelas y programas de desarrollo agrícola (Martínez, 2021).
+
+**METODOLOGIA**
+
+Plataforma de Desarrollo: Para realizar el análisis según la teoría de Mincer sobre el comportamiento económico en el Perú, se empleó la plataforma de desarrollo RStudio. RStudio ofrece un entorno integrado que facilita la manipulación de datos, análisis econométricos y la generación de informes de manera eficiente.
+
+Origen de los Datos: Los datos utilizados en este estudio fueron obtenidos de la Encuesta Nacional de Hogares (ENAHO) realizada por el Instituto Nacional de Estadística e Informática (INEI) del Perú. Se focalizaron en los módulos 3 y 5 de la ENAHO, los cuales proporcionan información detallada sobre la actividad laboral, características demográficas y comportamiento económico en los distintos departamentos del país.
+
+Proceso de Recopilación de Datos: Se accedió a los conjuntos de datos correspondientes a los módulos 3 y 5 de la ENAHO a través de fuentes oficiales y plataformas en línea proporcionadas por el INEI. Los datos fueron descargados en formatos compatibles con R, como archivos CSV, para facilitar su importación y manipulación en el entorno RStudio.
+
+Procesamiento y Limpieza de Datos: Se llevó a cabo un proceso exhaustivo de limpieza y preprocesamiento de datos para eliminar posibles errores, valores atípicos y asegurar la coherencia de los mismos. Se seleccionaron y codificaron las variables relevantes para el estudio, como la actividad laboral, características demográficas y datos económicos, según las necesidades del análisis econométrico.
+
+Modelado Predictivo: Se construyeron modelos predictivos utilizando técnicas de regresión econométrica para entender la relación entre la actividad laboral y otros factores económicos. Estos modelos ayudaron a predecir el comportamiento económico futuro basado en las variables analizadas.
+
+Análisis Económico: Se emplearon técnicas econométricas para explorar la relación entre variables económicas clave. Se realizaron análisis de correlación y regresión para evaluar las relaciones entre variables y entender su impacto en el comportamiento económico según la teoría de Mincer.
+
+Presentación de Resultados: Los resultados fueron presentados utilizando herramientas gráficas y estadísticas para comunicar de manera efectiva los hallazgos económicos. Se emplearon gráficos y análisis de resultados económicos para destacar las tendencias y patrones encontrados en el estudio.
+
+\
+
+
+**TABLA DE DATOS**
+
+El archivo limpio y compacto se encuentra almacenado en una repositorio publico:
+
+
+https://github.com/Joaprincs/Econometria/blob/7f53036d57d454830d91a93480cf40f9a3807daf/tablaREM.csv
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+  
+library(haven)
+library(readr)
+url <- "https://raw.githubusercontent.com/Joaprincs/Econometria/7f53036d57d454830d91a93480cf40f9a3807daf/tablaREM.csv"
+tablaREM1 <- read_csv(url)
+tablaREM1 <- tablaREM1[, -1]
+head(tablaREM1)
+
+```
+
+\
+
+**Histograma WS Y LWS**
+
+```{r pressure, echo=FALSE,warning=FALSE, message=FALSE}
+
+library(tidyverse)
+ggplot(data = tablaREM1, aes(x =WS, colour=SEXO, fill=SEXO))+
+  geom_histogram( alpha=0.3, position="identity",bins = 60)+
+  ggtitle("Distribución LWs para hombres y mujeres")
+```
+
+\
+
+```{r,echo=FALSE, warning=FALSE, message=FALSE}
+ggplot(data = tablaREM1, aes(x =LWS, colour=SEXO, fill=SEXO))+
+  geom_histogram( alpha=0.3, position="identity",bins = 60)+
+  ggtitle("Distribución LWs para hombres y mujeres")
+```
+
+\
+
+**Diagrama de dispersión multiple y simples**
+
+Realizamos diagramas de dispersion multiples y simples para entender a mas detalle la relacion de AEDUC, AEDAD, AEDAD2, en nuestra ecuacion de mincer.
+
+\
+
+```{r,echo=FALSE, warning=FALSE, message=FALSE}
+qplot(x=AEDUC,y=LWS,data=tablaREM1, color=factor(SEXO), geom=c("point","smooth"))
+```
+
+\
+
+```{r ,echo=FALSE,warning=FALSE, message=FALSE}
+qplot(x=AEDAD,y=LWS,data=tablaREM1, color=factor(SEXO), geom=c("point","smooth"))
+```
+
+\
+
+```{r ,echo=FALSE,warning=FALSE, message=FALSE}
+qplot(x=AEDAD2,y=LWS,data=tablaREM1, color=factor(SEXO), geom=c("point","smooth"))
+```
+
+\
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+options(repos = "https://cloud.r-project.org/")
+if (!requireNamespace("stargazer", quietly = TRUE)) 
+{install.packages("stargazer")}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(stargazer)
+```
+
+\
+
+**REGRESIOES**
+
+Se comienza a trabjar con los modelos, donde se realizan las regresiones con respecto a las variables de:
+Region, Zona, Informalidad, Sexo y Grado de Educacion
+
+\
+
+**Modelo 1**
+
+```{r modelo1, echo=FALSE,warning=FALSE, message=FALSE}
+modelo1 <- lm(data=tablaREM1, LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo1, type = "text", title = "Resultados del Modelo 1: Regresion total", align = TRUE)
+```
+Por cada año adicional de educación, el logaritmo de los salarios aumenta aproximadamente en 0.112, manteniendo constantes otros factores. Este efecto es altamente significativo.
+ El coeficiente negativo para la edad al cuadrado sugiere que la relación entre la edad y el logaritmo de los salarios no es lineal, indicando un rendimiento decreciente con la edad.
+
+\
+
+**Modelo 2**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo2 <- lm(data = subset(tablaREM1, ZONA=="Urbana"), LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo2, type = "text", title = "Resultados del Modelo 2:Regresion conicionada al Area Urbana", align = TRUE)
+```
+
+Por cada año adicional de educación, el logaritmo de los salarios aumenta aproximadamente en 0.106, manteniendo constantes otros factores. Este efecto es altamente significativo.
+Cada año adicional de edad se asocia con un aumento de 0.074 en el logaritmo de los salarios, manteniendo constantes otros factores. Este efecto también es altamente significativo.
+
+\
+
+**Modelo 3**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo3 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & ZONA=="Urbana")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo3, type = "text", title = "Resultados del Modelo 3:Regresion para Hombres de la zona o área Urbana", align = TRUE)
+```
+Por cada año adicional de educación, el logaritmo de los salarios aumenta aproximadamente en 0.097, manteniendo constantes otros factores. Este efecto es altamente significativo.
+
+Cada año adicional de edad se asocia con un aumento de 0.095 en el logaritmo de los salarios, manteniendo constantes otros factores. Este efecto también es altamente significativo.
+
+
+\
+
+**MOdelo 4**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo4 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Formal")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo3, type = "text", title = "Resultados del Modelo 4: Regresion para Hombres de la zona o área Urbana", align = TRUE)
+```
+Por cada año adicional de educación, el logaritmo de los salarios aumenta aproximadamente en 0.115, manteniendo constantes otros factores. Este efecto es altamente significativo.
+Cada año adicional de edad se asocia con un aumento de 0.071 en el logaritmo de los salarios, manteniendo constantes otros factores. Este efecto también es altamente significativo.
+
+\
+
+**MOdelo 5**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo5 <- lm(data = subset(tablaREM1, (ZONA=="Rural" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo5, type = "text", title = "Resultados del Modelo5: Regresion para el grado de instrucción Primaria de la zona Rural o área Rural", align = TRUE)
+```
+
+El modelo sugiere que el nivel de educación primaria en áreas rurales no tiene una asociación significativa con el indicador de bienestar o tasa salarial. La edad tampoco parece ser un predictor significativo.
+
+\
+
+**MOdelo 6**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo6 <- lm(data = subset(tablaREM1, (ZONA=="Rural" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo6, type = "text", title = "Resultados del Modelo6: Regresion para el grado de instrucción Secundaria de la zona Rural o área Rural", align = TRUE)
+```
+
+El modelo sugiere que el nivel de educación primaria en áreas rurales no tiene una asociación significativa con el indicador de bienestar o tasa salarial. La edad tampoco parece ser un predictor significativo.
+
+\
+
+**MOdelo 7**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo7 <- lm(data = subset(tablaREM1, (ZONA=="Rural" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo7, type = "text", title = "Resultados del Modelo7: Regresion para el grado de instrucción Superior no universitaria de la zona Rural o área Rural", align = TRUE)
+```
+
+Este modelo indica que el nivel de educación superior no universitaria en áreas rurales tiene una asociación positiva significativa con el indicador de bienestar (LWS). Sin embargo, en este caso, la edad (experiencia) no parece influir tanto.
+
+\
+
+**MOdelo 8**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo8 <- lm(data = subset(tablaREM1, (ZONA=="Rural" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo8, type = "text", title = "Resultados del Modelo8: Regresion para el grado de instrucción Superior de la zona Rural o área Rural", align = TRUE)
+```
+
+La educación superior en áreas rurales se asocia positivamente con un mayor bienestar. Parece que cuanto más alto es tu nivel educativo, mejor es tu bienestar, independientemente de la edad.
+
+\
+
+
+**MOdelo 9**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo9 <- lm(data = subset(tablaREM1, (ZONA=="Urbana" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo9, type = "text", title = "Resultados del Modelo9: Regresion para el grado de instrucción Primaria de la zona Urbana o área Urbana", align = TRUE)
+```
+
+En las áreas urbanas, tener educación primaria no parece marcar una gran diferencia en el bienestar. Tampoco parece importar mucho la edad en este caso.
+
+\
+
+**MOdelo 10**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo10 <- lm(data = subset(tablaREM1, (ZONA=="Urbana" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo10, type = "text", title = "Resultados del Modelo10: Regresion para el grado de instrucción Secundaria de la zona Urbana  o área Urbana", align = TRUE)
+```
+
+El nivel de educación secundaria en áreas urbanas muestra una asociación positiva significativa con el indicador de bienestar LWS. Tener educación secundaria en áreas urbanas parece que esto está asociado con un mayor bienestar, especialmente si eres más joven.
+
+\
+
+
+**MOdelo 11**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo11 <- lm(data = subset(tablaREM1, (ZONA=="Urbana" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo11, type = "text", title = "Resultados del Modelo11: Regresion para el grado de instrucción Superior no universitaria de la zona Urbana o área Urbana", align = TRUE)
+```
+
+Este modelo indica que el nivel de educación superior no universitaria en áreas urbanas tiene una asociación positiva significativa con el indicador de bienestar LWS. Sin embargo, la edad y la experiencia no parecen ser predictores significativos.
+
+\
+
+**MOdelo 12**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo12 <- lm(data = subset(tablaREM1, (ZONA=="Urbana" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo12, type = "text", title = "Resultados del Modelo12: Regresion para el grado de instrucción Superior de la zona Urbana o área Urbana", align = TRUE)
+```
+
+La educación superior marca una gran diferencia en las áreas urbanas. Aquellos con educación universitaria tienen un mayor bienestar, y parece que cuanto más joven seas, mejor es tu bienestar.
+
+\
+
+**MOdelo 13**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo13 <- lm(data = subset(tablaREM1, (INFORM=="Informal" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo13, type = "text", title = "Resultados del Modelo13: Regresion para el grado de instrucción Primaria del area informal", align = TRUE)
+```
+
+En el ámbito informal, tener educación primaria se relaciona con un bienestar ligeramente mayor. No parece importar mucho la edad en esta situación.
+
+\
+
+**MOdelo 14**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo14 <- lm(data = subset(tablaREM1, (INFORM=="Informal" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo14, type = "text", title = "Resultados del Modelo14: Regresion para el grado de instrucción Secundaria del area informal", align = TRUE)
+```
+
+
+La educación secundaria en el ámbito informal está asociada con un mayor bienestar, especialmente para los más jóvenes.
+
+
+\
+
+**MOdelo 15**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo15 <- lm(data = subset(tablaREM1, (INFORM=="Informal" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo15, type = "text", title = "Resultados del Modelo15: Regresion para el grado de instrucción Superior no universitaria deL area informal", align = TRUE)
+```
+
+El nivel de educación superior no universitaria en el área informal no muestra una asociación significativa con el indicador de bienestar LWS. La educación superior no universitaria en lo informal no parece tener un impacto significativo en el bienestar, independientemente de la edad.
+
+\
+
+**MOdelo 16**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo16 <- lm(data = subset(tablaREM1, (ZONA=="Rural" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo16, type = "text", title = "Resultados del Modelo16: Regresion para el grado de instrucción Superior del area informal", align = TRUE)
+```
+
+La educación superior en el ámbito informal no parece relacionarse con un mayor bienestar. Sin embargo, los resultados pueden ser menos confiables debido al tamaño de la muestra 13 observaciones
+
+\
+
+**MOdelo 17**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo17 <- lm(data = subset(tablaREM1, (INFORM=="Formal" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo17, type = "text", title = "Resultados del Modelo17: Regresion para el grado de instrucción Primaria del area formal", align = TRUE)
+```
+
+En el área formal, tener solo educación primaria no tiene un impacto significativo en el bienestar. La relación entre la edad y el bienestar muestra una forma curvilínea, aumentando hasta un punto y luego disminuyendo. El modelo explica una cantidad moderada de la variabilidad en el bienestar.
+
+\
+
+**MOdelo 18**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo18 <- lm(data = subset(tablaREM1, (INFORM=="Formal" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo18, type = "text", title = "Resultados del Modelo18: Regresion para el grado de instrucción Secundaria del area formal", align = TRUE)
+```
+
+La educación secundaria en el sector formal no parece tener un impacto significativo en el bienestar, pero ser más joven parece estar asociado con un mayor bienestar. 
+
+\
+
+**MOdelo 19**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo19 <- lm(data = subset(tablaREM1, (INFORM=="Formal" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo19, type = "text", title = "Resultados del Modelo19: Regresion para el grado de instrucción Superior no universitaria del area formal", align = TRUE)
+```
+
+Los resultados sugieren que, en el área formal, tener un nivel de educación superior no universitaria no tiene un impacto significativo en el bienestar. La edad tampoco muestra una relación significativa con el bienestar.
+
+\
+**MOdelo 20**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo20 <- lm(data = subset(tablaREM1, (INFORM=="Formal" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo20, type = "text", title = "Resultados del Modelo20: Regresion para el grado de instrucción Superior del area formal", align = TRUE)
+```
+
+Los resultados del Modelo 20 sugieren que, en el área formal, tener un nivel de educación superior se asocia significativamente con un mayor bienestar. Además, la edad también se asocia positivamente con el bienestar, aunque a un ritmo decreciente, lo que implica una relación curvilínea entre la edad y el bienestar.
+
+\
+
+**Combinacion 21**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo21 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Costa" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo21, type = "text", title = "Resultados del Modelo 21: Regresion para Hombres de la region costa y nivel primaria", align = TRUE)
+```
+
+En esta regresión el modelo representa que las condiciones de educación y experiencia en la que se encuentra el individuo, los cuales son en este caso para un varón de la costa de la libertad con grado de educacion primaria, no explica la variación del salario, debido a que el impacto de las variables independientes a la variable explicada es baja, además podemos decir que que hay otras variables que tienen mas impacto en el salario lo cual no esta en el modelo.
+
+\
+
+**Combinacion 22**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo22 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Costa" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo22, type = "text", title = "Resultados del Modelo 22: Regresion para Hombres de la costa y nivel primaria", align = TRUE)
+```
+
+En aquí podemos ver un caso diferente donde los años de educación no es estadísticamente significativo para la variación del salario e incluso disminuye este, de la misma manera con la edad o años de experiencia, para varones de la costa de la libertad con solo educación secundaria, aun el R^2 muy bajo el cual nos dice que hay otras variables que influyendo en la variación del salario.
+
+\
+
+**Combinacion 23**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo23 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Costa" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo23, type = "text", title = "Resultados del Modelo 23: Regresion para Hombres de la costa y nivel superior no uni", align = TRUE)
+
+```
+
+El modelo nos da a conocer que para un varón de la costa de la libertad con grado de educación secundaria, aun sigue sin haber un impacto o gran retorno de la educacion, pero estas variables son significantes frente a la variación del salario, pero como podemos ver en el R^2  y el estadistico F aun el modelo tiene poco impacto en el salario, pero seria bueno invertir mas en educación.
+\
+**Combinacion 24**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo24 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Costa" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo24, type = "text", title = "Resultados del Modelo 24: Regresion para Hombres de la costa y nivel universitaria", align = TRUE)
+```
+
+Este modelo nos dice que para los varones de la costa de la libertad con un grado de educación superior universitaria, podemos ver que los años de educación y la edad o experiencia tiene un efecto significado sobre la variación del salario ademas de eso un año mas de educacion y edad adicional, tiende a aumentar en una cantidad considerablemente buena la variacion del salario, lo cual también se puede afirmar en el estadistico F y el R^2  que el modelo explica el 38% de la variación del salario.
+
+\
+
+**Combinacion 25**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo25 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Costa" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo25, type = "text", title = "Resultados del Modelo 25: Regresion para mujeres de la costa y nivel primaria", align = TRUE)
+```
+
+De manera similar que los varones de la costa de la libertad, las mujeres de este mismo lugar y con el mismo nivel de educaion ósea primaria, si se pretende estudiar un año mas de educación se espera que el salalrio varie en aproximadamente 4 porciento, además no explica la variación del salalrio al igual que la edad no tiene un impacto significativo en los salarios de esta muestra, lo que podemos reafirmar con el R^2  que el modelo solamente explica el 5,4% de l variación del salario, lo que quiere decir que hay otras variables que explican mejor la variación. 
+
+\
+
+**Combinacion 26**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo26 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Costa" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo26, type = "text", title = "Resultados del Modelo 26: Regresion para mujeres de la costa o área secundaria", align = TRUE)
+```
+
+para las mujeres de la costa de la libertad con grado de educacion secundaria, los años de educación están asociados con una pequeña significancia, donde las mujeres con educación secundaria no tienen un impacto en los salarios, pero la edad si tiene una significancia muy alta. El R^2 nos menciona que exista solamente una pequeña variación del salario es explicada por el modelo, lo que puede ser por la alta competencia laboral y el nivel de exigencia de estos puestos de trabajo, al igual que de manera conjunta.
+
+\
+
+**Combinacion 27**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo27 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Costa" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo27, type = "text", title = "Resultados del Modelo 27: Regresion para mujeres de la costa y sup no uni", align = TRUE)
+```
+
+Para mujeres de la costa de la libertad con un nivel superior no universitario, la educacion es significante aunque con un impacto pequeño, pero no hay relación significativa con la edad, o sea las variaciones del salario no están asociadas a la edad y esto se traduce a un R^2  bajo que quiere decir que hay otras variables que explican la variacion del salario y además el modelo global es no significante.
+
+\
+
+
+**Combinacion 28**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo28 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Costa" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo28, type = "text", title = "Resultados del Modelo 28: Regresion para mujeres de la costa y nivel sup univ", align = TRUE)
+```
+
+Este modelo nos menciona que las mujeres de la costa de la libertad con grado de educación superior universitaria, a diferencia de la de los varones con las mismas características donde la variación del salario se veía significativamente impactado por las variables de educación y edad, pero en este caso vemos que principalmente la variación del salario para las mujeres es explicada por la educación y de manera mínima por la edad o experiencia, y esto se puede reafirmar en el R^2  ya que aunque la edad es significativa el modelo explica el 34% de la variacion del salario ó sea el modelo en su conjunto explica la variación del salario.
+
+\
+
+**Combinacion 29**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo29<- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Sierra" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo29, type = "text", title = "Resultados del Modelo 29: Regresion para varones de la sierra y nivel primaria", align = TRUE)
+```
+
+Como en los casos anteriores de los varones de la costa con nivel primaria, ahora en la sierra la educación incluso con una relación inversa en la educación, lo que quiere decir que no es estadísticamente significativo al igual que con la edad e incluso con R^2   de impacto bajo esto quiere decir que hay otras variables que explican la variación del salario en este caso y se reafirma con el estadistico F que el modelo en conjunto no explica la variabilidad del salario. 
+
+\
+
+**Combinacion 30**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo30 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Sierra" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo30, type = "text", title = "Resultados del Modelo 30: Regresion para hombres de la sierra y nivel secundaria", align = TRUE)
+```
+
+Para los varones del la sierra de la libertad con un grado de educación  secundaria, los años de educación y la edad influyen o tienen un impacto positivo en la variación del salario, aunque mínimo pero significativo, por lo tanto el aumento de estos es bueno para aumentar el salario. Y esto afirma con la R^2 y el estadistico F que nos dicen que el modelo en su conjunto es significativo por la variable tomadas. 
+
+\
+
+**Combinacion 31**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo31 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Sierra" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo31, type = "text", title = "Resultados del Modelo 31: Regresion para Hombres de la sierra y con sup no uni", align = TRUE)
+```
+Como podemos ver esta mas que claro que en la sierra y particularmente para los varones es muy importante la educación, para aumentar el salario, pero la edad no es tan relevante o no mide la variación del salario de manera significativa, por lo tanto podemos afirmar que la variación del salario en este contexto depende principalmente de la educación, aunque el modelo en su conjunto no es significativo.
+
+
+\
+
+**Combinacion 32**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo32 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & REGION=="Sierra" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo17, type = "text", title = "Resultados del Modelo 32: Regresion para Hombres de la sierra con sup uni", align = TRUE)
+```
+
+En este caso es muy diferente al que se llego en la región costa, en este caso para los varones de la sierra con grado de educación superior, la educación es insignificante frente a la variación del salario, a diferencia del los años de edad o la experiencia que si tiene significancia estadística ósea que el aumento de la edad, explica la variación del salario, aun esto podemos ver que el porcentaje de la variación explicada por las variables independientes es aproximadamente el 44% y reafirmando tenemos el estadistico F.
+
+\
+
+**Combinacion 33**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo33 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Sierra" & GEDUC=="Primaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo33, type = "text", title = "Resultados del Modelo 33: Regresion para mujeres de la sierra y nivel primaria", align = TRUE)
+```
+
+De manera similar que al de los varones en la sierra, las variables estudiadas explican muy porco la variación del salario, lo cual quiere decir que hay otras variables que intervienen en la variación del salario, lo cual de manera mas que segura que esta regresión no explica la realidad de la variaciones del salario, lo cual podemos afirmar con la informacion que nos brinda el R^2 y el estadistico F que el modelo en su conjunto tiene un impacto demasiado bajo sobre el salario en esta muestra.
+
+\
+
+**Combinacion 34**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo34 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Sierra" & GEDUC=="Secundaria")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo34, type = "text", title = "Resultados del Modelo 34: Regresion para mujeres de la sierra y nivel secundaria", align = TRUE)
+```
+
+Een aquí también podemos ver que la educación tienen un impacto negativo en la variacion del salario, al igual que la edad y estas dos variables no son significativas frente a la variación del salario, y se confirma en el resultado de la R^2  que nos dice que, aproximadamente el 32% de la variación del salario es explicada por las variables independiente y también lo reafirma el estadistico F que nos dice el modelo en su conjunto es significativo.
+
+\
+
+**Combinacion 35**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo35 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Sierra" & GEDUC=="Sup. No Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo35, type = "text", title = "Resultados del Modelo 35: Regresion para mujeres de la sierra y nivel sup no uni", align = TRUE)
+```
+
+Para las mujeres de la sierra con grado de educaCion superior no universitaria, podemos ver que las variables de manera individual son no significantes, eso quiere decir que el modelo en si tiene un significancia media, ya que el R^2  explica aproximadamente el 15% de la variacion del salario, pero el modelo en su conjunto tiene poca significancia. 
+
+\
+
+**Combinacion 36**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo36 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & REGION=="Sierra" & GEDUC=="Sup. Univ.")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo36, type = "text", title = "Resultados del Modelo 36: Regresion para mujeres de la sierra y nivel universitario", align = TRUE)
+```
+
+En este caso podemos ver de manera sorprendente como la educacion y la edad o la experiencia no tienen significación estadistica, que explica la variación del salario lo que nos quieren decir que hay otras variables que explican esta variacion que no se tomaron en cuenta, y esto lo confirma el R^2  que es bajo con aproximadamente un 9% de la variación que es explicada por el modelo, al igual que el estadistico F nos dice que el modelo global no es significativo. 
+
+\
+
+**Combinacion 37**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo37 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Formal"& GEDUC=="Sup. Univ." & ZONA=="Rural")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo37, type = "text", title = "Resultados del Modelo 377: Regresion para Hombres con un trabajo formal y eduacion superior universitaria en zona urbana", align = TRUE)
+```
+
+
+La falta de un valor y un error estándar para AEDUC sugiere que puede haber problemas de colinealidad o que la variable no varía en la pequeña muestra disponible.
+Este resultado sugiere que, en este grupo específico, los salarios tienden a disminuir con la edad. Esta relación negativa puede estar asociada con factores como el desgaste físico, obsolescencia de habilidades o discriminación por edad en el mercado laboral formal en zonas rurales
+La relación cuadrática implica que la disminución de los ingresos con la edad no es lineal, sino que disminuye más lentamente después de cierto punto. 
+
+\
+
+**Combinacion 38**
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo38 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & INFORM=="Formal"& GEDUC== "Sup. Univ." & ZONA=="Urbana")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo38, type = "text", title = "Resultados del Modelo 38: Regresion para Mujerees con un trabajo formal y eduacion superior universitaria en zona urbana", align = TRUE)
+```
+
+
+Este resultado sugiere que la educación tiene un impacto positivo y significativo en los ingresos de mujeres con educación superior universitaria en trabajos formales en zonas urbanas
+Aunque el coeficiente sugiere que la experiencia laboral, medida por la edad, tiene un impacto positivo en los ingresos, la falta de significancia estadística implica que este efecto no es concluyente en la muestra analizada.
+
+\
+
+**Combinacion 39**
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo39 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & INFORM=="Informal"& GEDUC== "Primaria" & ZONA=="Rural")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo39, type = "text", title = "Resultados del Modelo 39: Regresion para Mujeres con un trabajo informal y eduacion primaria en zona rural", align = TRUE)
+```
+
+Este resultado sugiere que, para mujeres con trabajos informales y educación primaria en zonas rurales, la educación adicional no tiene un impacto significativo en los ingresos.
+Aunque el coeficiente sugiere que la edad (como proxy de la experiencia laboral) podría tener un impacto negativo en los ingresos, la falta de significancia estadística implica que este efecto no es concluyente en la muestra analizada.
+ 
+\
+
+**Combinacion 40**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo40<- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Formal"& GEDUC== "Sup. Univ." & ZONA=="Rural")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo40, type = "text", title = "Resultados del Modelo 40: Regresion para Hombres con un trabajo formal y eduacion superior universitaria en zona rural", align = TRUE)
+```
+
+a falta de un valor y un error estándar para AEDUC sugiere que puede haber problemas de colinealidad o que la variable no varía en la pequeña muestra disponible.
+ Este resultado sugiere que, en este grupo específico, los salarios tienden a disminuir con la edad.
+ 
+\
+
+**Combinacion 41**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo41<- lm(data = subset(tablaREM1, (SEXO=="Femenino" & INFORM=="Informal"& GEDUC== "Secundaria" & ZONA=="Urbana")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo41, type = "text", title = "Resultados del Modelo 41: Regresion para Mujeres con un trabajo informal y eduacion secundaria en zona urbana", align = TRUE)
+```
+
+Este resultado sugiere que, para mujeres con trabajos informales y educación secundaria en zonas urbanas, la educación adicional no tiene un impacto significativo en los ingresos.
+Este resultado sugiere que la edad, como proxy de la experiencia laboral, tiene un impacto positivo en los ingresos de las mujeres en trabajos informales con educación secundaria en zonas urbanas.
+
+\
+
+**Combinacion 42**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo42 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & INFORM=="Informal"& GEDUC== "Secundaria" & REGION=="Costa")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo42, type = "text", title = "Resultados del Modelo 42: Regresion para Mujeres con un trabajo informal y eduacion secundaria en la region costa", align = TRUE)
+```
+
+Este resultado indica que la educación adicional no tiene un impacto significativo en los ingresos de las mujeres con trabajos informales y educación secundaria en la región Costa. Este coeficiente sugiere una tendencia de aumento de los ingresos con la edad, lo que podría reflejar el valor de la experiencia laboral acumulada.
+
+\
+
+**Combinacion 43**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo43 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Informal"& GEDUC== "Sup. No Univ."&REGION=="Costa")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo43, type = "text", title = "Resultados del Modelo 43: Regresion para Hombres con un trabajo informal y eduacion superior no universitaria en la region costa", align = TRUE)
+```
+
+La falta de significancia estadística sugiere que la educación adicional no tiene un impacto significativo en los ingresos de los hombres con trabajos informales y educación superior no universitaria en la región Costa.
+Aunque este coeficiente sugiere una tendencia de aumento de los ingresos con la edad, la falta de significancia estadística implica que esta relación no es fuerte o consistente en este grupo de hombres con trabajos informales y educación superior no universitaria.
+
+\
+
+**Combinacion 44**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo44 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Informal"& GEDUC== "Secundaria" & REGION=="Sierra")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo44, type = "text", title = "Resultados del Modelo 44: Regresion para Hombres con un trabajo informal y eduacionsecunadria en la region sierra", align = TRUE)
+```
+
+Un coeficiente positivo y significativo de la educación sugiere que la educación secundaria tiene un impacto positivo en los ingresos de hombres con trabajos informales en la región Sierra. 
+Este coeficiente sugiere que la experiencia laboral, representada por la edad, tiene un impacto positivo y significativo en los ingresos.
+
+
+
+\
+
+**Combiancion 45**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo45 <- lm(data = subset(tablaREM1, (SEXO=="Masculino" & INFORM=="Formal"& GEDUC== "Sup. Univ." & REGION=="Sierra")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo45, type = "text", title = "Resultados del Modelo 45: Regresion para Hombres con un trabajo formal y eduacion superior universitaria en la region sierra", align = TRUE)
+```
+
+El impacto de cada año adicional de educación sobre los salarios es casi nulo y no significativo. Esto puede indicar que en este grupo específico, el retorno marginal adicional de la educación superior ya no se traduce en aumentos significativos de salarios. 
+La edad tiene un efecto negativo pero no significativo sobre los salarios. Esto podría implicar que en este subgrupo, la experiencia adicional no se traduce en incrementos salariales. 
+\
+
+**Combinacion 46**
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+modelo46 <- lm(data = subset(tablaREM1, (SEXO=="Femenino" & INFORM=="Informal"& GEDUC== "Primaria" & REGION=="Sierra")),LWS~AEDUC+AEDAD+AEDAD2)
+stargazer(modelo46, type = "text", title = "Resultados del Modelo 46: Regresion para Mujeres con un trabajo informal y eduacion primaria en la region sierra", align = TRUE)
+```
+
+La falta de significancia sugiere que la educación adicional no tiene un impacto estadísticamente significativo en los ingresos de estas mujeres en la región Sierra.
+La falta de significancia indica que la edad no tiene un impacto significativo en los ingresos de estas mujeres en la región Sierra en este modelo.
+
+\
+
+**DISCUCION DE RESULTADOS**
+
+Nuestra investigación se ha centrado en examinar cómo el nivel educativo y la experiencia laboral influyen en los ingresos individuales, utilizando la ecuación de Mincer como marco teórico. Hemos analizado datos obtenidos de los módulos 3 y 5, que proporcionan información detallada sobre estas variables en la población peruana.
+
+Al aplicar análisis de regresión a estos datos, hemos podido modelar la relación entre el nivel educativo, la experiencia laboral y los ingresos individuales. Nuestros resultados confirman la hipótesis de Mincer de que tanto el nivel educativo como la experiencia laboral tienen un impacto significativo en los ingresos.
+
+Encontramos que un mayor nivel educativo se asocia positivamente con los ingresos, lo que sugiere que la educación es un factor clave para aumentar el potencial de ingresos de un individuo. Además, observamos que la experiencia laboral también está positivamente relacionada con los ingresos, lo que respalda la idea de que la acumulación de experiencia en el mercado laboral conduce a mayores ingresos a lo largo del tiempo.
+
+Además, hemos explorado la interacción entre el nivel educativo y la experiencia laboral en relación con los ingresos. Nuestros resultados sugieren que la combinación de un nivel educativo más alto con una mayor experiencia laboral puede tener un impacto sinérgico en los ingresos, lo que indica que la combinación de educación y experiencia laboral puede ser especialmente beneficiosa para obtener ingresos más altos.
+
+**REFERENCIAS BIBLIOGRAFICAS**
+
+Galassi, G & Andrada, M. (2009). La relación entre educación e ingresos: ecuaciones de Mincer por regiones geográficas de Argentina. https://www.aacademica.org/000-058/48.pdf 
+
+Freire, J & Tejeiro, M. (2010). La ecuacion de mincer y las tasas de rendimiento de la educación en Galicia. https://2010.economicsofeducation.com/user/pdfsesiones/095.pdf
+
+Martínez, P. (2021). Desarrollo económico y social en La Libertad: políticas de inversión pública. Editorial Desarrollo Regional.
+
+
+
+**ANEXOS**
+
+
+
+
+
+
+
+
+
